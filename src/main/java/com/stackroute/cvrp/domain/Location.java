@@ -3,10 +3,9 @@ package com.stackroute.cvrp.domain;
 public class Location {
 	private String orderLatitude;
 	private String orderLongitude;
-	
-	
+
 	public Location() {
-		//super();
+		// super();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -35,7 +34,5 @@ public class Location {
 	public String toString() {
 		return orderLatitude + "," + orderLongitude;
 	}
-	
-	
 
 }

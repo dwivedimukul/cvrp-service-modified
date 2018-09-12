@@ -6,11 +6,9 @@ public class Slots {
 
 	private boolean[] slotAvailability;
 	private String[] slotCost;
-	
 
 	public Slots() {
-		//super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Slots(boolean[] slotAvailability, String[] slotCost) {
@@ -40,6 +38,5 @@ public class Slots {
 	public void setSlotCost(String[] slotCost) {
 		this.slotCost = slotCost;
 	}
-	
 
 }

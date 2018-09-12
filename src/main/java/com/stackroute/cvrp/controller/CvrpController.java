@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.stackroute.cvrp.domain.DateLogistics;
 import com.stackroute.cvrp.domain.Route;
+import com.stackroute.cvrp.domain.Slot;
+import com.stackroute.cvrp.domain.Vehicle;
+import com.stackroute.cvrp.service.CvrpService;
 import com.stackroute.cvrp.service.RoutingService;
 
 @RestController
@@ -16,18 +20,30 @@ import com.stackroute.cvrp.service.RoutingService;
 public class CvrpController {
 
 	private RoutingService routingService;
+	private Route newRoute;
+	private DateLogistics dl;
+	private Slot[] sl;
+
 	@Autowired
 	public CvrpController(RoutingService routingService) {
-		this.routingService=routingService;
+		this.routingService = routingService;
 	}
-	
-	
-	@RequestMapping(value = "/slots", method = RequestMethod.POST, produces = "application/json")
-	public ResponseEntity<?> giveSlots(@RequestBody Route route){
-		Route newRoute;
-		System.out.println("controller-->");
-		newRoute = routingService.getOrderedRoute(route);
-		return new ResponseEntity<Route>(newRoute,HttpStatus.OK);
-	}	
+
+	@RequestMapping(value = "/slots", method = RequestMethod.POST)
+	public ResponseEntity<?> giveSlots(@RequestBody Route route) {
+
+		// System.out.println("controller-->"+route);
+		System.out.println("");
+		// cvrpService.getJson(route);
+		dl = route.getDateLogistics();
+		sl = dl.getSlots();
+		// System.out.println(sl[1].toString());
+		// System.out.println(sl[2].toString());
+		Vehicle v[] = sl[0].getSlotVehicle();
+		// System.out.println("vehicle capacity "+v[0].getVehicleCapacity());
+
+		newRoute = routingService.getNewOrderedRoute(route);
+		return new ResponseEntity<Route>(newRoute, HttpStatus.OK);
+	}
 
 }

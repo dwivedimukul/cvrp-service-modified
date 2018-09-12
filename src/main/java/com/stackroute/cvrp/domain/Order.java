@@ -1,8 +1,5 @@
 package com.stackroute.cvrp.domain;
 
-import javax.persistence.Entity;
-
-@Entity
 public class Order {
 
 	private String orderId;
@@ -15,8 +12,6 @@ public class Order {
 	private boolean isRouted;
 	private Slots availableSlots;
 	private String selectedSlot;
-	
-	
 
 	public String getOrderId() {
 		return orderId;
@@ -123,7 +118,7 @@ public class Order {
 	}
 
 	public Order() {
-		//super();
+		// super();
 		// TODO Auto-generated constructor stub
 	}
 

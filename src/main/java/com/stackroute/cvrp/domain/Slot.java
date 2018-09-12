@@ -59,7 +59,7 @@ public class Slot {
 	}
 
 	public Slot() {
-		//super();
+		// super();
 		// TODO Auto-generated constructor stub
 	}
 

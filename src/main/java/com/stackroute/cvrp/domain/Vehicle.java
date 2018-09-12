@@ -4,15 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class Vehicle {
-	@Override
-	public String toString() {
-		return "Vehicle [vehicleId=" + vehicleId + ", vehicleCapacity=" + vehicleCapacity + ", vehicleLoadedCapacity="
-				+ vehicleLoadedCapacity + ", vehicleRouteDuration=" + vehicleRouteDuration
-				+ ", vehicleRouteDurationLimit=" + vehicleRouteDurationLimit + ", vehicleCurrentLocation="
-				+ vehicleCurrentLocation + ", vehicleRoute=" + Arrays.toString(vehicleRoute) + "]";
-	}
+
 	private String vehicleId;
 	private String vehicleCapacity;
 	private String vehicleLoadedCapacity;
@@ -21,14 +14,18 @@ public class Vehicle {
 	private String vehicleCurrentLocation;
 	private Order[] vehicleRoute;
 
+	public Vehicle() {
+		
+	}
+
 	public Vehicle(String vehicleId, String vehicleCapacity, String vehicleLoadedCapacity, String vehicleRouteDuration,
-			String vehicleRouteDurationLimit,String vehicleCurrentLocation, Order[] vehicleRoute) {
+			String vehicleRouteDurationLimit, String vehicleCurrentLocation, Order[] vehicleRoute) {
 		this.vehicleId = vehicleId;
 		this.vehicleCapacity = vehicleCapacity;
 		this.vehicleLoadedCapacity = vehicleLoadedCapacity;
 		this.vehicleRouteDuration = vehicleRouteDuration;
 		this.vehicleRouteDurationLimit = vehicleRouteDurationLimit;
-		this.vehicleCurrentLocation=vehicleCurrentLocation;
+		this.vehicleCurrentLocation = vehicleCurrentLocation;
 		this.vehicleRoute = vehicleRoute;
 	}
 
@@ -87,34 +84,39 @@ public class Vehicle {
 	public void setVehicleRoute(Order[] vehicleRoute) {
 		this.vehicleRoute = vehicleRoute;
 	}
+
 	public void addOrder(Order order)// Add Customer to Vehicle Route
 	{
-		
-		List<Order> vehicleRouteList=new ArrayList<>();
-		List<Order> vehicleRoute=new ArrayList<>();
+
+		List<Order> vehicleRouteList = new ArrayList<>();
+		List<Order> vehicleRoute = new ArrayList<>();
 		Order orderObj;
-		
-		vehicleRouteList=Arrays.asList(this.getVehicleRoute());
-		for(int i=0;i<vehicleRouteList.size();i++) {
-			orderObj=vehicleRouteList.get(i);
-			vehicleRoute.add(orderObj);
+		if (this.getVehicleRoute() != null) {
+			vehicleRouteList = Arrays.asList(this.getVehicleRoute());
+			for (int i = 0; i < vehicleRouteList.size(); i++) {
+				orderObj = vehicleRouteList.get(i);
+				vehicleRoute.add(orderObj);
+			}
+			this.vehicleLoadedCapacity += order.getOrderVolume();
+			this.vehicleCurrentLocation = order.getOrderId();
 		}
-		this.vehicleLoadedCapacity += order.getOrderVolume();
-		this.vehicleCurrentLocation=order.getOrderId();
 	}
 
-	public Vehicle() {
-		//super();
-		// TODO Auto-generated constructor stub
-	}
-	public Vehicle(int id,int cap) {
-		this.vehicleId=String.valueOf(id);
-		this.vehicleCapacity=String.valueOf(cap);
-		this.vehicleLoadedCapacity=String.valueOf(0);
-		this.vehicleCurrentLocation=String.valueOf(0);
-		
-	}
 	
+	public Vehicle(int id, int cap) {
+		this.vehicleId = String.valueOf(id);
+		this.vehicleCapacity = String.valueOf(cap);
+		this.vehicleLoadedCapacity = String.valueOf(0);
+		this.vehicleCurrentLocation = String.valueOf(0);
 
+	}
+
+	@Override
+	public String toString() {
+		return "Vehicle [vehicleId=" + vehicleId + ", vehicleCapacity=" + vehicleCapacity + ", vehicleLoadedCapacity="
+				+ vehicleLoadedCapacity + ", vehicleRouteDuration=" + vehicleRouteDuration
+				+ ", vehicleRouteDurationLimit=" + vehicleRouteDurationLimit + ", vehicleCurrentLocation="
+				+ vehicleCurrentLocation + ", vehicleRoute=" + Arrays.toString(vehicleRoute) + "]";
+	}
 
 }

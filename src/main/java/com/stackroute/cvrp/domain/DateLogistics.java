@@ -7,12 +7,14 @@ public class DateLogistics {
 	private Slot[] slots;
 
 	public DateLogistics() {
-		
+
 	}
+
 	@Override
 	public String toString() {
 		return "DateLogistics [date=" + date + ", slots=" + Arrays.toString(slots) + "]";
 	}
+
 	public DateLogistics(String date, Slot[] slots) {
 
 		this.date = date;
