@@ -20,19 +20,22 @@ import com.stackroute.cvrp.service.RoutingService;
 public class CvrpController {
 
 	private RoutingService routingService;
+	private CvrpService cvrpService;
 	private Route newRoute;
 	private DateLogistics dl;
 	private Slot[] sl;
 
 	@Autowired
-	public CvrpController(RoutingService routingService) {
+	public CvrpController(RoutingService routingService,CvrpService cvrpService) {
 		this.routingService = routingService;
+		this.cvrpService=cvrpService;
 	}
 
 	@RequestMapping(value = "/slots", method = RequestMethod.POST)
 	public ResponseEntity<?> giveSlots(@RequestBody Route route) {
 
 		// System.out.println("controller-->"+route);
+		cvrpService.getRoute(route);
 		System.out.println("");
 		// cvrpService.getJson(route);
 		dl = route.getDateLogistics();

@@ -8,7 +8,7 @@ import com.stackroute.cvrp.exceptions.IllegalLocationMatrixException;
 
 public interface CvrpService {
 
-//	public Route getJson();
+	public void getRoute(Route route);
 //
 //	public void setJson(Route route);
 

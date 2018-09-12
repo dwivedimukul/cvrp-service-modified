@@ -30,6 +30,7 @@ public class RoutingServiceImpl implements RoutingService {
 	private Location newOrderLocation;
 	private Location depoLocation=new Location("12.9353863", "77.6117461");
 	private double[][] distanceMatrix;
+	private boolean checkIfFits;
 	
 
 	@Autowired
@@ -81,9 +82,10 @@ public class RoutingServiceImpl implements RoutingService {
 		ordersList.add(newOrder);
 		locationList.add(newOrderLocation);
 		distanceMatrix=cvrpServiceImpl1.getDistanceMatrix(locationList);
-//		cvrpServiceImpl1.checkIfFits(newOrder.getOrderVolume());
-//		cvrpServiceImpl1.greedySolution(ordersList, distanceMatrix);
+		checkIfFits=cvrpServiceImpl1.checkIfFits(newOrder.getOrderVolume());
 		
+//		cvrpServiceImpl1.greedySolution(ordersList, distanceMatrix);
+//		
 		for (int i = 0; i < distanceMatrix.length; i++) {
 			for (int j = 0; j < distanceMatrix.length; j++)
 				System.out.println("distance matrix is " + distanceMatrix[i][j]);
