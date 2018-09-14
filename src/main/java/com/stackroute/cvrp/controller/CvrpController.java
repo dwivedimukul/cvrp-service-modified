@@ -26,9 +26,9 @@ public class CvrpController {
 	private Slot[] sl;
 
 	@Autowired
-	public CvrpController(RoutingService routingService,CvrpService cvrpService) {
+	public CvrpController(RoutingService routingService, CvrpService cvrpService) {
 		this.routingService = routingService;
-		this.cvrpService=cvrpService;
+		this.cvrpService = cvrpService;
 	}
 
 	@RequestMapping(value = "/slots", method = RequestMethod.POST)

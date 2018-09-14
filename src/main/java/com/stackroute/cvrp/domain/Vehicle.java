@@ -6,6 +6,15 @@ import java.util.List;
 
 public class Vehicle {
 
+	public ArrayList<Order> getVehicleRouteList() {
+	
+		return vehicleRouteList;
+	}
+
+	public void setVehicleRouteList(ArrayList<Order> vehicleRouteList) {
+		this.vehicleRouteList = vehicleRouteList;
+	}
+
 	private String vehicleId;
 	private String vehicleCapacity;
 	private String vehicleLoadedCapacity;
@@ -13,9 +22,10 @@ public class Vehicle {
 	private String vehicleRouteDurationLimit;
 	private String vehicleCurrentLocation;
 	private Order[] vehicleRoute;
+	private ArrayList<Order> vehicleRouteList;
 
 	public Vehicle() {
-		
+
 	}
 
 	public Vehicle(String vehicleId, String vehicleCapacity, String vehicleLoadedCapacity, String vehicleRouteDuration,
@@ -102,7 +112,6 @@ public class Vehicle {
 		}
 	}
 
-	
 	public Vehicle(int id, int cap) {
 		this.vehicleId = String.valueOf(id);
 		this.vehicleCapacity = String.valueOf(cap);
@@ -117,6 +126,13 @@ public class Vehicle {
 				+ vehicleLoadedCapacity + ", vehicleRouteDuration=" + vehicleRouteDuration
 				+ ", vehicleRouteDurationLimit=" + vehicleRouteDurationLimit + ", vehicleCurrentLocation="
 				+ vehicleCurrentLocation + ", vehicleRoute=" + Arrays.toString(vehicleRoute) + "]";
+	}
+	
+	public boolean CheckIfFits(String demand) {
+		int dem=Integer.parseInt(demand);
+		int vehLoad=Integer.parseInt(vehicleLoadedCapacity);
+		int vehCap=Integer.parseInt(vehicleCapacity);
+		return((vehLoad+dem <= vehCap));
 	}
 
 }

@@ -9,9 +9,49 @@ public class Order {
 	private Location orderLocation;
 	private String orderVolume;
 	private String orderDate;
+	private boolean isDepot;
 	private boolean isRouted;
 	private Slots availableSlots;
 	private String selectedSlot;
+
+	public Order() {
+		// super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Order(String orderId, String orderConsumerName, String orderConsumerAddress, String orderConsumerPhone,
+			Location orderLocation, String orderVolume, String orderDate, boolean isDepot, boolean isRouted,
+			Slots availableSlots, String selectedSlot) {
+		super();
+		this.orderId = orderId;
+		this.orderConsumerName = orderConsumerName;
+		this.orderConsumerAddress = orderConsumerAddress;
+		this.orderConsumerPhone = orderConsumerPhone;
+		this.orderLocation = orderLocation;
+		this.orderVolume = orderVolume;
+		this.orderDate = orderDate;
+		this.isDepot = isDepot;
+		this.isRouted = isRouted;
+		this.availableSlots = availableSlots;
+		this.selectedSlot = selectedSlot;
+	}
+	
+
+	public Order(Location orderLocation) {
+		this.orderId = "00";
+		this.orderConsumerName = "depot";
+		this.orderConsumerAddress = "depot";
+		this.orderConsumerPhone = "000";
+		this.orderLocation = orderLocation;
+		this.orderVolume = "00";
+		this.orderDate = "00";
+		this.isDepot = true;
+		this.isRouted = false;
+		this.availableSlots = null;
+		this.selectedSlot = null;
+		
+		
+	}
 
 	public String getOrderId() {
 		return orderId;
@@ -93,33 +133,13 @@ public class Order {
 		this.selectedSlot = selectedSlots;
 	}
 
-	public Order(String orderId, String orderConsumerName, String orderConsumerAddress, String orderConsumerPhone,
-			Location orderLocation, String orderVolume, String orderDate, boolean isRouted, Slots availableSlots,
-			String selectedSlots) {
-		super();
-		this.orderId = orderId;
-		this.orderConsumerName = orderConsumerName;
-		this.orderConsumerAddress = orderConsumerAddress;
-		this.orderConsumerPhone = orderConsumerPhone;
-		this.orderLocation = orderLocation;
-		this.orderVolume = orderVolume;
-		this.orderDate = orderDate;
-		this.isRouted = isRouted;
-		this.availableSlots = availableSlots;
-		this.selectedSlot = selectedSlots;
-	}
-
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + ", orderConsumerName=" + orderConsumerName + ", orderConsumerAddress="
 				+ orderConsumerAddress + ", orderConsumerPhone=" + orderConsumerPhone + ", orderLocation="
-				+ orderLocation + ", orderVolume=" + orderVolume + ", orderDate=" + orderDate + ", isRouted=" + isRouted
-				+ ", availableSlots=" + availableSlots + ", selectedSlot=" + selectedSlot + "]";
-	}
-
-	public Order() {
-		// super();
-		// TODO Auto-generated constructor stub
+				+ orderLocation + ", orderVolume=" + orderVolume + ", orderDate=" + orderDate + ", isDepot=" + isDepot
+				+ ", isRouted=" + isRouted + ", availableSlots=" + availableSlots + ", selectedSlot=" + selectedSlot
+				+ "]";
 	}
 
 }
