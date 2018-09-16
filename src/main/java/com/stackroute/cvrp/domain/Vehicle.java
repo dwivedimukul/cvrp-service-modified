@@ -6,14 +6,6 @@ import java.util.List;
 
 public class Vehicle {
 
-	public ArrayList<Order> getVehicleRouteList() {
-	
-		return vehicleRouteList;
-	}
-
-	public void setVehicleRouteList(ArrayList<Order> vehicleRouteList) {
-		this.vehicleRouteList = vehicleRouteList;
-	}
 
 	private String vehicleId;
 	private String vehicleCapacity;
@@ -22,7 +14,7 @@ public class Vehicle {
 	private String vehicleRouteDurationLimit;
 	private String vehicleCurrentLocation;
 	private Order[] vehicleRoute;
-	private ArrayList<Order> vehicleRouteList;
+	//private ArrayList<Order> vehicleRouteList;
 
 	public Vehicle() {
 
@@ -96,20 +88,28 @@ public class Vehicle {
 	}
 
 	public void addOrder(Order order)// Add Customer to Vehicle Route
+	
 	{
-
+		//System.out.println("order in add order+++++"+order.toString());
 		List<Order> vehicleRouteList = new ArrayList<>();
 		List<Order> vehicleRoute = new ArrayList<>();
 		Order orderObj;
-		if (this.getVehicleRoute() != null) {
-			vehicleRouteList = Arrays.asList(this.getVehicleRoute());
-			for (int i = 0; i < vehicleRouteList.size(); i++) {
-				orderObj = vehicleRouteList.get(i);
-				vehicleRoute.add(orderObj);
-			}
-			this.vehicleLoadedCapacity += order.getOrderVolume();
+//		if (this.getVehicleRoute() != null) {
+//			vehicleRouteList = Arrays.asList(this.getVehicleRoute());
+//			for (int i = 0; i < vehicleRouteList.size(); i++) {
+//				orderObj = vehicleRouteList.get(i);
+//				vehicleRoute.add(order);
+//			}
+		
+		  int i=this.vehicleRoute.length-1;
+			  this.vehicleRoute[i]=order;
+			//this.vehicleLoadedCapacity += order.getOrderVolume();
+			int vehicleLoadedCapacity = Integer.parseInt(this.vehicleLoadedCapacity);
+			vehicleLoadedCapacity += Integer.parseInt(order.getOrderVolume());
+			//System.out.println("vehicle ++++"+vehicleLoadedCapacity);
+			this.vehicleLoadedCapacity=Integer.toString(vehicleLoadedCapacity);
 			this.vehicleCurrentLocation = order.getOrderId();
-		}
+		
 	}
 
 	public Vehicle(int id, int cap) {
@@ -117,6 +117,10 @@ public class Vehicle {
 		this.vehicleCapacity = String.valueOf(cap);
 		this.vehicleLoadedCapacity = String.valueOf(0);
 		this.vehicleCurrentLocation = String.valueOf(0);
+		this.vehicleRoute = new Order[] {};
+		//this.vehicleRoute = new vehicleRoute[];
+		
+	
 
 	}
 
