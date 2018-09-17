@@ -478,8 +478,18 @@ public class CvrpServiceImpl1 implements CvrpService {
 		System.out.println("=========================================================");
 		System.out.println(Solution_Label + "\n");
 
+		int vehicleFilledCapacity=0;
+		
 		for (int j = 0; j < this.noOfVehicles; j++) {
+			
 			if (this.vehicles[j].getVehicleRoute().length!=0) {
+				for(int e=0;e<this.vehicles[j].getVehicleRoute().length;e++) {
+				System.out.println("vehicle route after tabau search"+this.vehicles[j].getVehicleRoute()[e]);
+				//get order capacity of each order in each vehicle and add all orders capacity and set to vehiclefilledcapacity
+				vehicleFilledCapacity += Integer.parseInt(this.vehicles[j].getVehicleRoute()[e].getOrderVolume());
+				this.vehicles[j].setVehicleLoadedCapacity(String.valueOf(vehicleFilledCapacity));
+				System.out.println("vehicles with filled capacity"+this.vehicles[j]);
+				}
 				System.out.print("Vehicle " + j + ":");
 				int RoutSize = this.vehicles[j].getVehicleRoute().length;
 				for (int k = 0; k < RoutSize; k++) {
