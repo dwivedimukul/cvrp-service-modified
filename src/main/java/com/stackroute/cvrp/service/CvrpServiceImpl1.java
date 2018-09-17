@@ -239,7 +239,7 @@ public class CvrpServiceImpl1 implements CvrpService {
 				}
 
 			} else {
-				vehicles[vehicleIndex].addOrder(orderObj);
+				this.vehicles[vehicleIndex].addOrder(orderObj);
 				orders[orderIndex].setRouted(true);
 				this.distance += minCost;
 			}
@@ -249,7 +249,7 @@ public class CvrpServiceImpl1 implements CvrpService {
 		System.out.println("*****************"+Integer.parseInt(vehicles[vehicleIndex].getVehicleCurrentLocation()));
 		endCost = distanceMatrix[Integer.parseInt(vehicles[vehicleIndex].getVehicleCurrentLocation())][0];
 		this.vehicles[vehicleIndex].addOrder(orders[0]);
-		vehicles[vehicleIndex].setVehicleRoute(orders);
+		//vehicles[vehicleIndex].setVehicleRoute(orders);
 		this.distance += endCost;
 		System.out.println("endcost in greedy" + endCost);
 		System.out.println("vehicles[veh]" + vehicles[vehicleIndex]);
