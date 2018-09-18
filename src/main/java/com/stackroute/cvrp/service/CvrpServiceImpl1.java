@@ -499,7 +499,7 @@ public class CvrpServiceImpl1 implements CvrpService {
 						System.out.print(this.vehicles[j].getVehicleRoute()[k].getOrderId() + "->");
 					}
 				}
-				System.out.println("vehicles with filled capacity"+vehicles[j]);
+				System.out.println("vehicles with filled capacity"+this.vehicles[j]);
 				System.out.println();
 			}
 		}
@@ -508,7 +508,7 @@ public class CvrpServiceImpl1 implements CvrpService {
 		System.out.println("vehciles in cvrp with filledcapacity"+vehicles[j]);
 		}
 		System.out.println("vehciles array"+vehicles.toString());
-		return this.vehicles;
+		return vehicles;
 	}
 
 }

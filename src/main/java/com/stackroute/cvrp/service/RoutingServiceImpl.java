@@ -97,11 +97,12 @@ public class RoutingServiceImpl implements RoutingService {
 			CvrpServiceImpl1 cvrp = new CvrpServiceImpl1(ordersList.size(), vehicles.length, vehicleCap);
 			cvrp.getRoute(route);
 			cvrp.greedySolution(ordersList, distanceMatrix);
-			cvrp.SolutionPrint("Solution after greedy solution");
-			for(int s=0;s<cvrp.updatedVehicles().length;s++) {
-				System.out.println("updated vehicles "+cvrp.updatedVehicles()[s].toString());
-				}
+			
 			cvrp.greedySolution(ordersList, distanceMatrix);
+			updatedVehicles=cvrp.SolutionPrint("Solution after greedy solution");
+			for(int s=0;s<cvrp.updatedVehicles().length;s++) {
+				System.out.println("updated vehicles after greedy solution"+cvrp.updatedVehicles()[s].toString());
+				}
 			//for(int k=0;k<vehicles.length;k++) {
 //			System.out.println("vehicles of routing service"+vehicles[i].getVehicleRoute().length);
 //			}
