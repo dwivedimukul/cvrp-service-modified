@@ -35,6 +35,7 @@ public class RoutingServiceImpl implements RoutingService {
 	private boolean checkIfFits;
 	private int vehicleCap;
 	private String slotid;
+	private Vehicle[] updatedVehicles;
 
 	@Autowired
 	public RoutingServiceImpl(CvrpServiceImpl1 cvrpServiceImpl1) {
@@ -106,8 +107,10 @@ public class RoutingServiceImpl implements RoutingService {
 //			}
 			cvrp.TabuSearch(10, distanceMatrix);
 			cvrp.SolutionPrint("Solution after tabu");
-
-			
+			updatedVehicles=cvrp.SolutionPrint("updated vehicles");
+			for(int e=0;e<updatedVehicles.length;e++) {
+			System.out.println("updated vehicles in routing "+updatedVehicles[e]);
+			}
 
 		}
 //		for (int i = 0; i < distanceMatrix.length; i++) {
