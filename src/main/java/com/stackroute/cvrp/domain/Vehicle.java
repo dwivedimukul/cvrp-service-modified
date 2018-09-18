@@ -146,8 +146,8 @@ public class Vehicle {
 
 	public boolean CheckIfFits(String demand) {
 		int dem = Integer.parseInt(demand);
-		int vehLoad = Integer.parseInt(vehicleLoadedCapacity);
-		int vehCap = Integer.parseInt(vehicleCapacity);
+		int vehLoad = Integer.parseInt(this.vehicleLoadedCapacity);
+		int vehCap = Integer.parseInt(this.vehicleCapacity);
 		return ((vehLoad + dem <= vehCap));
 	}
 
